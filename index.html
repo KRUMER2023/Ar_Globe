@@ -1,30 +1,33 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <script src="https://aframe.io/releases/1.4.2/aframe.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/mind-ar@1.2.2/dist/mindar-image-aframe.prod.js"></script>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Floor AR Demo</title>
+    
+    <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.4.0/model-viewer.min.js"></script>
+    
+    <style>
+      body { margin: 0; background-color: #171717; }
+      model-viewer { width: 100vw; height: 100vh; }
+    </style>
   </head>
   <body>
-    <a-scene 
-      mindar-image="imageTargetSrc: targets1.mind;" 
-      color-space="sRGB" 
-      renderer="colorManagement: true, physicallyCorrectLights" 
-      vr-mode-ui="enabled: false" 
-      device-orientation-permission-ui="enabled: false">
-      
-      <a-camera position="0 0 0" look-controls="enabled: false"></a-camera>
 
-      <a-entity mindar-image-target="targetIndex: 0">
-        <a-gltf-model 
-          rotation="0 0 0 " 
-          position="0 0 0.1" 
-          scale="0.005 0.005 0.005" 
-          src="hapebeast-cap.glb" 
-          animation="property: rotation; to: 0 360 0; loop: true; dur: 10000">
-        </a-gltf-model>
-      </a-entity>
+    <model-viewer 
+      src="https://modelviewer.dev/shared-assets/models/Astronaut.glb" 
+      ar 
+      ar-modes="webxr scene-viewer quick-look" 
+      camera-controls 
+      auto-rotate
+      shadow-intensity="1"
+      environment-image="neutral">
       
-    </a-scene>
+      <button slot="ar-button" style="background-color: white; border-radius: 4px; border: none; position: absolute; top: 16px; right: 16px; padding: 10px; font-weight: bold;">
+        👋 Activate AR
+      </button>
+      
+    </model-viewer>
+
   </body>
 </html>
